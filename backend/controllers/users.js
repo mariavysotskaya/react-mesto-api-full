@@ -23,7 +23,7 @@ const login = (req, res, next) => {
             throw new UnauthorizedError('Неправильный пароль');
           }
           const token = jwt.sign({ _id: user._id }, 'secret-key', { expiresIn: '7d' });
-          res.send({ token, message: 'Авторизация успешна' });
+          res.send({ token: token, message: 'Авторизация успешна' });
           /*
           res
             .cookie('jwt', token, { httpOnly: true })
