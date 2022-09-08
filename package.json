@@ -1,0 +1,26 @@
+{
+  "name": "react-mesto-api-full",
+  "version": "1.0.0",
+  "description": "Репозиторий для приложения проекта `Mesto`, включающий фронтенд и бэкенд части приложения со следующими возможностями: авторизации и регистрации пользователей, операции с карточками и пользователями. Бэкенд расположите в директории `backend/`, а фронтенд - в `frontend/`.",
+  "main": "frontend/src/index.js",
+  "scripts": {
+    "start": "node backend/app.js",
+    "server": "npm run dev --prefix backend",
+    "front:install": "npm install --prefix frontend",
+    "front:build": "npm run build --prefix frontend",
+    "lint": "npx eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariavysotskaya/react-mesto-api-full.git"
+  },
+  "author": "Maria Vysotskaya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariavysotskaya/react-mesto-api-full/issues"
+  },
+  "homepage": "https://github.com/mariavysotskaya/react-mesto-api-full#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}

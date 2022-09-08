@@ -1,27 +1,11 @@
 const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../errors/unauthorized-err');
-/*
-module.exports = (req, res, next) => {
-  const { cookies } = req;
-  if (!cookies) {
-    throw new UnauthorizedError('Необходима авторизация');
-  }
 
-  let payload;
-  try {
-    payload = jwt.verify(cookies.jwt, 'secret-key');
-  } catch {
-    throw new UnauthorizedError('Необходима авторизация');
-  }
-  req.user = payload;
-  next();
-};
-*/
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    throw new UnauthorizedError('Необходима авторизация');
+    throw new UnauthorizedError('Необходима авторизация - это из мидлвар сообщение');
   }
 
   const token = authorization.replace('Bearer ', '');
@@ -29,8 +13,8 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, 'some-secret-key');
-  } catch {
+    payload = jwt.verify(token, process.env.NODE_ENV === 'production' ? process.env.JWT_SECRET : 'dev-secret-key');
+  } catch (err) {
     throw new UnauthorizedError('Необходима авторизация');
   }
 

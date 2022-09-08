@@ -3,14 +3,13 @@ const mongoose = require('mongoose');
 const { celebrate, errors } = require('celebrate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const path = require('path');
+require('dotenv').config();
 
 const PORT = 3000;
 const { userSchemaValidation, userCredentialsSchemaValidation } = require('./middlewares/req-validation');
 const { login, createUser } = require('./controllers/users');
-const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const userRouter = require('./routes/users');
-const cardRouter = require('./routes/cards');
 const NotFoundError = require('./errors/not-found-err');
 const errHandler = require('./middlewares/err-handle');
 
@@ -29,17 +28,22 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
+// только для разработки, собирай фронт, потом эту статику сюда
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+
+app.use(require('./middlewares/cors-handle'));
+
 app.post('/signup', celebrate(userSchemaValidation), createUser);
 app.post('/signin', celebrate(userCredentialsSchemaValidation), login);
 
-app.use(auth);
-
-app.use('/users', userRouter);
-app.use('/cards', cardRouter);
-
-app.get('/signout', (req, res) => {
-  res.clearCookie('jwt').send({ message: 'Выход' });
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
 });
+
+app.use(require('./middlewares/auth'));
+
+app.use('/users', require('./routes/users'));
+app.use('/cards', require('./routes/cards'));
 
 app.use('*', () => {
   throw new NotFoundError('Страница не найдена');

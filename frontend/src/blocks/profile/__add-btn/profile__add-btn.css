@@ -1,0 +1,27 @@
+.profile__add-btn {
+  height: 50px;
+  max-width: 150px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  font: inherit;
+  border: 2px solid white;
+  background: url("../../../images/profile/add-btn.svg");
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  justify-self: end;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__add-btn {
+    justify-self: center;
+  }
+}
+
+@media screen and (max-width: 324px) {
+  .profile__add-btn {
+    max-width: none;
+  }
+}

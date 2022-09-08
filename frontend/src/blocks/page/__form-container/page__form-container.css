@@ -1,0 +1,10 @@
+.page__form-container {
+  width: 358px;
+  margin: 60px auto 0;
+}
+  
+@media screen and (max-width: 544px) {
+  .page__form-container {
+    width: 260px;
+  }
+}

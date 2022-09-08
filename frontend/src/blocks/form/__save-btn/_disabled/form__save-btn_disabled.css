@@ -1,0 +1,7 @@
+.form__save-btn_disabled {
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  color: #C4C4C4;
+  box-sizing: border-box;
+  pointer-events: none;
+}

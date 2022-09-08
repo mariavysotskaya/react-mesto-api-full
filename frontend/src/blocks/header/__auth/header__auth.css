@@ -1,0 +1,6 @@
+.header__auth {
+  display: flex;
+  justify-content: space-between;
+  color: #FFFFFF;
+  margin: 0 0 46px;
+}
