@@ -87,11 +87,11 @@ class Api {
     this._headers['Authorization'] = `Bearer ${token}`
   }
 }
-// https://api.nomesto.nomoredomains.xyz/
-const api = new Api('http://localhost:3000/', {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json; charset=utf-8',
-    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+// http://localhost:3000/
+const api = new Api('http://api.nomesto.nomoredomains.xyz/', {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json; charset=utf-8',
+  'Authorization': `Bearer ${localStorage.getItem('token')}`,
 });
 
 export default api;

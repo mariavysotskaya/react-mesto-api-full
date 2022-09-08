@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const { celebrate, errors } = require('celebrate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const path = require('path');
+// const path = require('path');
+const cors = require('cors');
 require('dotenv').config();
 
 const PORT = 3000;
@@ -14,6 +15,8 @@ const NotFoundError = require('./errors/not-found-err');
 const errHandler = require('./middlewares/err-handle');
 
 const app = express();
+
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -29,17 +32,15 @@ app.get('/crash-test', () => {
 });
 
 // только для разработки, собирай фронт, потом эту статику сюда
-app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
-
-app.use(require('./middlewares/cors-handle'));
+// app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
 app.post('/signup', celebrate(userSchemaValidation), createUser);
 app.post('/signin', celebrate(userCredentialsSchemaValidation), login);
-
+/*
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
 });
-
+*/
 app.use(require('./middlewares/auth'));
 
 app.use('/users', require('./routes/users'));
