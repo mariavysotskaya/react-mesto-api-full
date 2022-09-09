@@ -37,7 +37,10 @@ export default function App() {
   useEffect(() => {
     if (isLoggedIn) {
       api.getCards()
-      .then((cardsData) => setCards(cardsData))
+      .then((cardsData) => {
+        cardsData = cardsData.reverse();
+        setCards(cardsData);
+      })
       .catch((err) => console.log('Не удалось получить данные'));
     }
   }, [currentUser]);
@@ -107,7 +110,7 @@ export default function App() {
   function handleAddPlaceSubmit(data) {
     api.addCard(data)
     .then((data => {
-      setCards([...cards, data.card]);
+      setCards([data.card, ...cards]);
       closeAllPopups();
     }))
     .catch(err => console.log('Не удалось сохранить изменения'))

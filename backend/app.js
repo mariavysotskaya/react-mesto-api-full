@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 mongoose.connect('mongodb://127.0.0.1:27017/');
+// mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.use(requestLogger);
 
@@ -31,7 +32,7 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-// только для разработки, собирай фронт, потом эту статику сюда
+// для разработки
 // app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
 app.post('/signup', celebrate(userSchemaValidation), createUser);
