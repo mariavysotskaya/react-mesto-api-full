@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 // const path = require('path');
 // const cors = require('./middlewares/cors-handle');//
-// const cors = require('cors');
+const cors = require('cors');
 require('dotenv').config();
 
 const PORT = 3000;
@@ -17,6 +17,8 @@ const errHandler = require('./middlewares/err-handle');
 
 const app = express();
 
+app.use(cors());
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 
@@ -24,8 +26,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/');
 // mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.use(requestLogger);
-
-// app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -36,7 +36,7 @@ app.get('/crash-test', () => {
 // для разработки
 // app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
-app.use(require('./middlewares/cors-handle'));
+// app.use(require('./middlewares/cors-handle'));
 
 app.post('/signup', celebrate(userSchemaValidation), createUser);
 app.post('/signin', celebrate(userCredentialsSchemaValidation), login);
