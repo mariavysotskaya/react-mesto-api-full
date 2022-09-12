@@ -7,3 +7,9 @@
   line-height: 22px;
   text-align: right;
 }
+
+@media screen and (max-width: 544px) {
+  .header__email {
+    font-size: 14px;
+  }
+}

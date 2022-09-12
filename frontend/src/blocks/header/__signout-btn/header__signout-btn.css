@@ -11,5 +11,6 @@
 @media screen and (max-width: 544px) {
   .header__signout-btn {
     margin-right: 20px;
+    font-size: 14px;
   }
 }
