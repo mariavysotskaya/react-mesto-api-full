@@ -1,10 +1,12 @@
+/*
 const allowedCors = [
   'https://mymesto.nomoredomains.xyz',
   'http://mymesto.nomoredomains.xyz',
   'http://localhost:3000',
   'https://localhost:3000',
 ];
-
+*/
+/*
 module.exports = ((req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
@@ -23,7 +25,7 @@ module.exports = ((req, res, next) => {
 
   return next();
 });
-/*
+*/
 const cors = (req, res, next) => {
   const { origin } = req.headers;
   const { method } = req;
@@ -44,4 +46,3 @@ const cors = (req, res, next) => {
 };
 
 module.exports = cors;
-*/
