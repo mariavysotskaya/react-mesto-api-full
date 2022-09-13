@@ -17,8 +17,19 @@ const errHandler = require('./middlewares/err-handle');
 
 const app = express();
 
-app.use(cors());
-app.options('*', cors());
+const options = {
+  origin: [
+    'http://localhost:3000',
+    'https://mymesto.nomoredomains.xyz',
+    'http://mymesto.nomoredomains.xyz',
+  ],
+  methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: ['Content-Type', 'origin', 'Authorization'],
+};
+
+app.use('*', cors(options));
 
 app.use(bodyParser.json());
 app.use(cookieParser());
