@@ -89,7 +89,7 @@ class Api {
 }
 // http://api.nomesto.nomoredomains.xyz/
 // http://localhost:3000/
-const api = new Api('http://api.nomesto.nomoredomains.xyz/', {
+const api = new Api('https://api.nomesto.nomoredomains.xyz/', {
   'Accept': 'application/json',
   'Content-Type': 'application/json; charset=utf-8',
   'Authorization': `Bearer ${localStorage.getItem('token')}`,
