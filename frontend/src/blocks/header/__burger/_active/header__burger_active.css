@@ -1,0 +1,21 @@
+@media screen and (max-width: 767px) {  
+  .header__burger_active {
+    position: absolute;
+    order: -1;
+    right: 0;
+  }
+  
+  .header__burger_active::before {
+    transform: rotate(45deg);
+    bottom: 12px;
+  }
+  
+  .header__burger_active::after {
+    transform: rotate(-45deg);
+    bottom: 12px;
+  }
+  
+  .header__burger_active span {
+    transform: scale(0);
+  }
+}

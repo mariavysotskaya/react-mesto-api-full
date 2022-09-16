@@ -7,11 +7,16 @@
 @import url("./blocks/content/__section/content__section.css");
 @import url("./blocks/content/__section/_mobile/content__section_mobile.css");
 @import url("./blocks/header/header.css");
+@import url("./blocks/header/__body/header__body.css");
+@import url("./blocks/header/__body/_reverse/header__body_reverse.css");
 @import url("./blocks/header/__logo/header__logo.css");
 @import url("./blocks/header/__auth/header__auth.css");
+@import url("./blocks/header/__auth/_active/header__auth_active.css");
 @import url("./blocks/header/__email/header__email.css");
 @import url("./blocks/header/__link/header__link.css");
 @import url("./blocks/header/__signout-btn/header__signout-btn.css");
+@import url("./blocks/header/__burger/header__burger.css");
+@import url("./blocks/header/__burger/_active/header__burger_active.css");
 @import url("./blocks/link/link.css");
 @import url("./blocks/button/button.css");
 @import url("./blocks/profile/profile.css");

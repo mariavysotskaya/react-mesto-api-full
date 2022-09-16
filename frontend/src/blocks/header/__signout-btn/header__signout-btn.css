@@ -8,9 +8,9 @@
   margin: 0 0 0 24px;
 }
 
-@media screen and (max-width: 544px) {
+@media screen and (max-width: 767px) {
   .header__signout-btn {
-    margin-right: 20px;
-    font-size: 14px;
+    display: block;
+    margin: 18px auto 40px;
   }
 }

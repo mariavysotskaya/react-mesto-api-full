@@ -6,10 +6,20 @@
   font-size: 18px;
   line-height: 22px;
   text-align: right;
+  align-self: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@media screen and (max-width: 544px) {
+@media screen and (max-width: 890px) {
   .header__email {
-    font-size: 14px;
+    max-width: 290px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__email {
+    max-width: 100%;
+    text-align: center;
   }
 }

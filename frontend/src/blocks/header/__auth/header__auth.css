@@ -2,5 +2,12 @@
   display: flex;
   justify-content: space-between;
   color: #FFFFFF;
-  margin: 0 0 46px;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .header__auth {
+    display: none;
+  }
 }

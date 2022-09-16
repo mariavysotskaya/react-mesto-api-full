@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { celebrate, errors } = require('celebrate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-// const path = require('path');
+const path = require('path');
 // const cors = require('./middlewares/cors-handle');//
 const cors = require('cors');
 require('dotenv').config();
@@ -34,8 +34,8 @@ app.use('*', cors(options));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-mongoose.connect('mongodb://127.0.0.1:27017/');
-// mongoose.connect('mongodb://localhost:27017/mestodb');
+// mongoose.connect('mongodb://127.0.0.1:27017/');
+mongoose.connect('mongodb://localhost:27017/mestodb');
 
 app.use(requestLogger);
 
@@ -46,7 +46,7 @@ app.get('/crash-test', () => {
 });
 
 // для разработки
-// app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
 // app.use(require('./middlewares/cors-handle'));
 

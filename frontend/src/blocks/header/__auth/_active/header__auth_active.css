@@ -1,0 +1,8 @@
+@media screen and (max-width: 767px) {  
+  .header__auth_active {
+    display: block;
+    flex-direction: column;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+  }
+}
