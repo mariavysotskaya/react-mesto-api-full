@@ -23,6 +23,7 @@ export default function Login(props) {
       <Form title="Вход" buttonText="Войти" onSubmit={handleSubmit} saveBtnStyle={'form__save-btn_type_page'}>
         <input
           required
+          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z][a-zA-Z]+$"
           type="email"
           minLength="2"
           maxLength="40"

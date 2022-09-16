@@ -87,7 +87,7 @@ class Api {
     this._headers['Authorization'] = `Bearer ${token}`
   }
 }
-// http://api.nomesto.nomoredomains.xyz/
+// https://api.nomesto.nomoredomains.xyz/
 // http://localhost:3000/
 const api = new Api('https://api.nomesto.nomoredomains.xyz/', {
   'Accept': 'application/json',

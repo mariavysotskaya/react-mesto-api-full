@@ -35,7 +35,7 @@ export default function EditProfilePopup(props) {
         required
         type="text"
         minLength="2"
-        maxLength="40"
+        maxLength="30"
         className="popup__input-fld popup__input-fld_type_name"
         id="name"
         name="name"
@@ -47,7 +47,7 @@ export default function EditProfilePopup(props) {
         required
         type="text"
         minLength="2"
-        maxLength="200"
+        maxLength="30"
         className="popup__input-fld popup__input-fld_type_job"
         id="job"
         name="about"

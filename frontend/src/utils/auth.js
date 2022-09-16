@@ -1,6 +1,6 @@
 const BASE_URL = 'https://api.nomesto.nomoredomains.xyz';
 // http://localhost:3000
-// http://api.nomesto.nomoredomains.xyz
+// https://api.nomesto.nomoredomains.xyz
 
 const handleResponse = (response) => {
   if (response.ok) {

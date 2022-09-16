@@ -4,7 +4,6 @@ const { celebrate, errors } = require('celebrate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 // const path = require('path');
-// const cors = require('./middlewares/cors-handle');//
 const cors = require('cors');
 require('dotenv').config();
 
@@ -48,15 +47,9 @@ app.get('/crash-test', () => {
 // для разработки
 // app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
-// app.use(require('./middlewares/cors-handle'));
-
 app.post('/signup', celebrate(userSchemaValidation), createUser);
 app.post('/signin', celebrate(userCredentialsSchemaValidation), login);
-/*
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
-});
-*/
+
 app.use(require('./middlewares/auth'));
 
 app.use('/users', require('./routes/users'));

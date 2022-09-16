@@ -24,6 +24,7 @@ function Register(props) {
       <Form title="Регистрация" buttonText="Зарегистрироваться" onSubmit={handleSubmit} saveBtnStyle={'form__save-btn_type_page'}>
         <input
           required
+          pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z][a-zA-Z]+$"
           type="email"
           minLength="2"
           maxLength="40"
