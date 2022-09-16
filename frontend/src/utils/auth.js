@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://api.nomesto.nomoredomains.xyz';
 // http://localhost:3000
 // http://api.nomesto.nomoredomains.xyz
 
