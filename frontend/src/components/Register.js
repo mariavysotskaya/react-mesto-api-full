@@ -48,7 +48,7 @@ function Register(props) {
           onChange={handleChangePassword} />
         <span id="job-error" className="popup__error" />
       </Form>
-      <p className="page__text">Уже зарегистрированы? <Link to="/signin" className="header__link" style={{color: "#FFFFFF", textDecoration: "none"}}>Войти</Link></p>
+      <p className="page__text">Уже зарегистрированы? <Link to="/signin" className="header__link" style={{color: "#FFFFFF", textDecoration: "none", marginRight: 0}}>Войти</Link></p>
     </div>
   )
 };

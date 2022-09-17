@@ -4,6 +4,12 @@
   transition: opacity linear;
 }
 
+@media screen and (max-width: 767px) {
+  .header__logo {
+    margin-left: 30px;
+  }
+}
+
 @media screen and (max-width: 544px) {
   .header__logo {
     width: 104px;
