@@ -15,12 +15,15 @@ import Login from './Login.js';
 import Register from './Register.js';
 import InfoTooltip from './InfoTooltip';
 
+import PopupWithForm from './PopupWithForm';
+
 export default function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
@@ -56,18 +59,24 @@ export default function App() {
     setIsAddPlacePopupOpen(true);
   };
 
+  function handleCardClick(card) {
+    setSelectedCard(card);
+    setIsImagePopupOpen(true);
+  };
+
+  function handleCardDeleteClick(card) {
+    setSelectedCard(card);
+    setIsConfirmPopupOpen(true);
+  };
+
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsImagePopupOpen(false);
     setIsInfoTooltipOpen(false);
+    setIsConfirmPopupOpen(false);
     setSelectedCard({});
-  };
-
-  function handleCardClick(card) {
-    setSelectedCard(card);
-    setIsImagePopupOpen(true);
   };
 
   function handleUpdateUser(user) {
@@ -101,7 +110,8 @@ export default function App() {
   function handleCardDelete(card) {
     api.deleteCard(card._id)
     .then(() => {
-      setCards(states => states.filter(c => c._id !== card._id))
+      setCards(states => states.filter(c => c._id !== card._id));
+      closeAllPopups();
     })
     .catch(err => console.log('Удаление не удалось'));
   };
@@ -187,7 +197,7 @@ export default function App() {
               onCardClick={handleCardClick}
               cards={cards}
               onCardLike={handleCardLike}
-              onCardDelete={handleCardDelete}
+              onCardDelete={handleCardDeleteClick}
             />
           </ProtectedRoute>
           <Route exact path="/signup">
@@ -199,11 +209,42 @@ export default function App() {
           <Redirect to="/signin" />
         </Switch>
         <Footer />
-        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
-        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
-        <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit}/>
-        <ImagePopup card={selectedCard} isOpen={isImagePopupOpen} onClose={closeAllPopups}/>
-        <InfoTooltip isOpen={isInfoTooltipOpen} isActionOK={isActionOK} onClose={closeAllPopups} />
+        <EditAvatarPopup
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
+        />
+        <EditProfilePopup
+          isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
+        />
+        <AddPlacePopup
+          isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
+          onAddPlace={handleAddPlaceSubmit}
+        />
+        <ImagePopup
+          card={selectedCard}
+          isOpen={isImagePopupOpen}
+          onClose={closeAllPopups}
+        />
+        <PopupWithForm
+          name="confirm"
+          title="Вы уверены?"
+          buttonText="Да"
+          isOpen={isConfirmPopupOpen}
+          onClose={closeAllPopups}
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleCardDelete(selectedCard);
+          }}
+        />
+        <InfoTooltip
+          isOpen={isInfoTooltipOpen}
+          isActionOK={isActionOK}
+          onClose={closeAllPopups}
+        />
       </div>
     </CurrentUserContext.Provider>
   );
