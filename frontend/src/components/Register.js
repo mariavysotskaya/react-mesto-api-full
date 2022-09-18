@@ -39,7 +39,7 @@ function Register(props) {
           required
           type="password"
           minLength="2"
-          maxLength="10"
+          maxLength="200"
           className="popup__input-fld popup__input-fld_type_page popup__input-fld_type_password"
           id="password"
           name="password"

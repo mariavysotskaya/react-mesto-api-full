@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "front": "cd .. && npm run start --prefix frontend",
     "lint": "npx eslint ."
   },
   "repository": {

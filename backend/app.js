@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { celebrate, errors } = require('celebrate');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-// const path = require('path');
+const path = require('path');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -33,8 +33,12 @@ app.use('*', cors(options));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-mongoose.connect('mongodb://127.0.0.1:27017/');
-// mongoose.connect('mongodb://localhost:27017/mestodb');
+if (process.env.NODE_ENV === 'production') {
+  mongoose.connect('mongodb://127.0.0.1:27017/');
+} else {
+  mongoose.connect('mongodb://localhost:27017/mestodb');
+  app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+}
 
 app.use(requestLogger);
 
@@ -43,9 +47,6 @@ app.get('/crash-test', () => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
 });
-
-// для разработки
-// app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
 app.post('/signup', celebrate(userSchemaValidation), createUser);
 app.post('/signin', celebrate(userCredentialsSchemaValidation), login);
